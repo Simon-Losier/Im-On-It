@@ -14,8 +14,10 @@ public class CelestialBody : MonoBehaviour
     private bool hasRigidbody;
 
 
-    private void Awake()
+    private void OnEnable()
     {
+        GravityManager.Instance.AddCelestialBody(this);
+
         currentVelocity = initialVelocity;
 
         hasRigidbody = true;
@@ -25,8 +27,13 @@ public class CelestialBody : MonoBehaviour
             hasRigidbody = false;
         }
     }
+/*
+    private void OnDisable()
+    {
+        
+    }*/
 
-    public void UpdateVelocity(CelestialBody[] allBodies, float timeStep)
+    public void UpdateVelocity(List<CelestialBody> allBodies, float timeStep)
     {
         foreach (var otherBody in allBodies)
         {
