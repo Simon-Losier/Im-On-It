@@ -48,3 +48,38 @@ MonoBehaviour:
   maxRadius: 38.84
   spawnTimer: 1
   prefab: {fileID: 9061055354731036286, guid: f2bb6841e4ad1ba408b2c89405782b86, type: 3}
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5002481
+      value: 0.50577784
+      inSlope: -0.015475293
+      outSlope: -0.015475293
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.63890415
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxSize: 3
+  minSize: 0.1

@@ -10,6 +10,9 @@ namespace Asteroids
         [SerializeField] private float maxRadius;
         [SerializeField] private float spawnTimer;
         [SerializeField] private GameObject prefab;
+        [SerializeField] private AnimationCurve scaleCurve;
+        [SerializeField] private float maxSize;
+        [SerializeField] private float minSize;
 
         private float _timer;
 
@@ -33,7 +36,20 @@ namespace Asteroids
             var radius = Random.Range(minRadius, maxRadius);
             var angle = Random.Range(0, 360);
             var position = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)) + transform.position;
-            Instantiate(prefab, position, Quaternion.identity, transform);
+            GameObject asteroid = Instantiate(prefab, position, Quaternion.identity, transform) as GameObject;
+
+            float scale = minSize + ((maxSize - minSize) * scaleCurve.Evaluate(Random.Range(0f, 1f)));
+            asteroid.transform.localScale = new Vector3(scale, scale, scale);
+
+            CelestialBody celestialBody = asteroid.GetComponent<CelestialBody>();
+
+            float scaledMass = celestialBody.rb.mass * scale;
+
+            var angleOfTarget = Random.Range(0, 360);
+            var targetPosition = new Vector3(radius * Mathf.Cos(angleOfTarget), 0, radius * Mathf.Sin(angleOfTarget)) + transform.position;
+
+            var initialVelocity = Random.Range(1f, 10f) * (targetPosition - position).normalized;
+            celestialBody.Initialize(scaledMass, initialVelocity);
         }
 
         private void OnDrawGizmosSelected()
