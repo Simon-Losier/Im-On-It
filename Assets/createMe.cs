@@ -6,7 +6,7 @@ using UnityEngine;
 public class createMe : MonoBehaviour
 {
     public GameObject prefab;
-    private bool done = false;
+    private bool done;
     // Update is called once per frame
     void Update()
     {
