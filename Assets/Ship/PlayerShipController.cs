@@ -5,7 +5,7 @@ namespace Ship
 {
     public class PlayerShipController : MonoBehaviour
     {
-        [SerializeField] private float turnSpeed = 150f;
+        [SerializeField] private float turnSpeed;
         private bool aKey;
         private bool dKey;
 
