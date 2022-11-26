@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Universe;
 
 public class CelestialBody : MonoBehaviour
 {
@@ -33,7 +32,7 @@ public class CelestialBody : MonoBehaviour
         
     }*/
 
-    public void UpdateVelocity(List<CelestialBody> allBodies, float timeStep)
+    public void UpdateVelocity(List<CelestialBody> allBodies, float gravityConstant, float timeStep)
     {
         foreach (var otherBody in allBodies)
         {
@@ -42,7 +41,7 @@ public class CelestialBody : MonoBehaviour
                 Vector3 delta = (otherBody.GetPosition() - this.GetPosition());
                 float sqsrDst = delta.sqrMagnitude;
                 Vector3 forceDir = delta.normalized;
-                Vector3 force = forceDir * UniversalConstants.gravitationalConstant * mass * otherBody.mass / sqsrDst;
+                Vector3 force = forceDir * gravityConstant * mass * otherBody.mass / sqsrDst;
                 Vector3 acceloration = force / mass;
                 currentVelocity += acceloration * timeStep;
             }
