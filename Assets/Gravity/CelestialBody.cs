@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class CelestialBody : MonoBehaviour
 {
-    public float mass;
-    public float radius;
     public Vector3 initialVelocity;
-    private Vector3 currentVelocity;
 
     private Rigidbody rb;
     private bool hasRigidbody;
 
 
-    private void OnEnable()
+    private void Awake()
     {
-        GravityManager.Instance.AddCelestialBody(this);
-
-        currentVelocity = initialVelocity;
-
         hasRigidbody = true;
         rb = GetComponent<Rigidbody>();
         if (rb == null)
@@ -26,11 +19,17 @@ public class CelestialBody : MonoBehaviour
             hasRigidbody = false;
         }
     }
-/*
+
+    private void OnEnable()
+    {
+        GravityManager.Instance.AddCelestialBody(this);
+        rb.velocity = initialVelocity;
+    }
+
     private void OnDisable()
     {
-        
-    }*/
+        GravityManager.Instance.RemoveCelestialBody(this);
+    }
 
     public void UpdateVelocity(List<CelestialBody> allBodies, float gravityConstant, float timeStep)
     {
@@ -41,20 +40,15 @@ public class CelestialBody : MonoBehaviour
                 Vector3 delta = (otherBody.GetPosition() - this.GetPosition());
                 float sqsrDst = delta.sqrMagnitude;
                 Vector3 forceDir = delta.normalized;
-                Vector3 force = forceDir * gravityConstant * mass * otherBody.mass / sqsrDst;
-                Vector3 acceloration = force / mass;
-                currentVelocity += acceloration * timeStep;
+                Vector3 force = forceDir * gravityConstant * rb.mass * otherBody.rb.mass / sqsrDst;
+                Vector3 acceloration = force / rb.mass;
+                rb.velocity += acceloration * timeStep;
             }
         }
     }
 
-    public void UpdatePosition (float timeStep)
-    {
-        transform.position += currentVelocity * timeStep;
-    }
-
     private Vector3 GetPosition()
     {
-        return (hasRigidbody) ? rb.transform.position : transform.position;
+        return (hasRigidbody) ? rb.position : transform.position;
     }
 }
