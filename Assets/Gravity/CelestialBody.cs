@@ -6,7 +6,7 @@ public class CelestialBody : MonoBehaviour
 {
     public Vector3 initialVelocity;
 
-    private Rigidbody rb;
+    public Rigidbody rb { get; private set; }
     private bool hasRigidbody;
 
 
@@ -50,5 +50,11 @@ public class CelestialBody : MonoBehaviour
     private Vector3 GetPosition()
     {
         return (hasRigidbody) ? rb.position : transform.position;
+    }
+
+    public void Initialize(float mass, Vector3 initialVelocity)
+    {
+        rb.mass = mass;
+        rb.velocity = initialVelocity;
     }
 }
