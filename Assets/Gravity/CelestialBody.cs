@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CelestialBody : MonoBehaviour
 {
-    public float mass;
     public float radius;
     public Vector3 initialVelocity;
-    private Vector3 currentVelocity;
 
     private Rigidbody rb;
     private bool hasRigidbody;
@@ -17,7 +15,7 @@ public class CelestialBody : MonoBehaviour
     {
         GravityManager.Instance.AddCelestialBody(this);
 
-        currentVelocity = initialVelocity;
+        rb.velocity = initialVelocity;
 
         hasRigidbody = true;
         rb = GetComponent<Rigidbody>();
@@ -41,20 +39,15 @@ public class CelestialBody : MonoBehaviour
                 Vector3 delta = (otherBody.GetPosition() - this.GetPosition());
                 float sqsrDst = delta.sqrMagnitude;
                 Vector3 forceDir = delta.normalized;
-                Vector3 force = forceDir * gravityConstant * mass * otherBody.mass / sqsrDst;
-                Vector3 acceloration = force / mass;
-                currentVelocity += acceloration * timeStep;
+                Vector3 force = forceDir * gravityConstant * rb.mass * otherBody.rb.mass / sqsrDst;
+                Vector3 acceloration = force / rb.mass;
+                rb.velocity += acceloration * timeStep;
             }
         }
     }
 
-    public void UpdatePosition (float timeStep)
-    {
-        transform.position += currentVelocity * timeStep;
-    }
-
     private Vector3 GetPosition()
     {
-        return (hasRigidbody) ? rb.transform.position : transform.position;
+        return (hasRigidbody) ? rb.position : transform.position;
     }
 }

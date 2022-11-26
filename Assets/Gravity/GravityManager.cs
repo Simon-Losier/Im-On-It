@@ -27,11 +27,6 @@ public class GravityManager : MonoBehaviour
         {
             bodies[i].UpdateVelocity(bodies, gravitationalConstant, physicsTimeStep);
         }
-
-        for (int i = 0; i < bodies.Count; i++)
-        {
-            bodies[i].UpdatePosition(physicsTimeStep);
-        }
     }
 
     public void AddCelestialBody(CelestialBody celestialBody)
