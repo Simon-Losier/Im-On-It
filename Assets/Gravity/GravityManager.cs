@@ -33,4 +33,9 @@ public class GravityManager : MonoBehaviour
     {
         bodies.Add(celestialBody);
     }
+
+    public void RemoveCelestialBody(CelestialBody celestial)
+    {
+        bodies.Remove(celestial);
+    }
 }

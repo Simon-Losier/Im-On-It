@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class CelestialBody : MonoBehaviour
 {
-    public float radius;
     public Vector3 initialVelocity;
 
     private Rigidbody rb;
     private bool hasRigidbody;
 
 
-    private void OnEnable()
+    private void Awake()
     {
-        GravityManager.Instance.AddCelestialBody(this);
-
-        rb.velocity = initialVelocity;
-
         hasRigidbody = true;
         rb = GetComponent<Rigidbody>();
         if (rb == null)
@@ -24,11 +19,17 @@ public class CelestialBody : MonoBehaviour
             hasRigidbody = false;
         }
     }
-/*
+
+    private void OnEnable()
+    {
+        GravityManager.Instance.AddCelestialBody(this);
+        rb.velocity = initialVelocity;
+    }
+
     private void OnDisable()
     {
-        
-    }*/
+        GravityManager.Instance.RemoveCelestialBody(this);
+    }
 
     public void UpdateVelocity(List<CelestialBody> allBodies, float gravityConstant, float timeStep)
     {
