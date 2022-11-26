@@ -9,6 +9,6 @@ public class DestroyOthersOnExit : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(destroyTag))
-            Destroy(other);
+            Destroy(other.gameObject);
     }
 }
