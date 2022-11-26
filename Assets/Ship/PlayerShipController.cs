@@ -27,15 +27,15 @@ namespace Ship
         private void FixedUpdate()
         {
             if (wKey)
-                Throttle(speed * Time.deltaTime);
+                Throttle(speed * Time.fixedDeltaTime);
             if (aKey)
             {
-                transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+                transform.Rotate(Vector3.up, -turnSpeed * Time.fixedDeltaTime);
             }
 
             if (dKey)
             {
-                transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+                transform.Rotate(Vector3.up, turnSpeed * Time.fixedDeltaTime);
             }
         }
 
