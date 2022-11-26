@@ -5,6 +5,7 @@ namespace Ship {
     {
         private Rigidbody rb;
         [SerializeField] private float projectileSpeed;
+        [SerializeField] private float explosionForce;
         private void Start() {
             rb = GetComponent<Rigidbody>();
         
@@ -12,8 +13,9 @@ namespace Ship {
 
         void OnCollisionEnter(Collision collision) {
             for (int i = 0; i < collision.contactCount; i++) {
-                collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(75, collision.contacts[i].point, 1f);
+                collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, collision.contacts[i].point, 1f);
             }
+            Destroy(this.gameObject);
         
         }
     
