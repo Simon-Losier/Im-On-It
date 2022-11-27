@@ -12,8 +12,7 @@ namespace Ship {
         [SerializeField] private float gracePeriod = 0.2f;
         [SerializeField] private float chargeForce;
         [SerializeField] private float maxChargeTime;
-        private bool isCharging;
-        private float chargeTime;
+        [SerializeField] private float chargeTime;
         
 
         private float gracePeriodTimer;
@@ -32,7 +31,7 @@ namespace Ship {
                 return;
             
             for (int i = 0; i < collision.contactCount; i++) {
-                collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, collision.contacts[i].point, 1f);
+                collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, collision.contacts[i].point, 3f);
             }
             Destroy(this.gameObject);
         
@@ -40,14 +39,12 @@ namespace Ship {
 
         void ChargeShot() {
             if (PlayerInputManager.Instance.Left && PlayerInputManager.Instance.Right) {
-                isCharging = true;
                 chargeTime += Time.deltaTime;
                 if (chargeTime > maxChargeTime) {
                     chargeTime = maxChargeTime;
                 }
             }
             else {
-                isCharging = false;
                 chargeTime = 0;
             }
             
@@ -58,7 +55,10 @@ namespace Ship {
             // rb.velocity = transform.forward * Time.fixedDeltaTime * projectileSpeed;
             // rb.AddForce(transform.forward * chargeForce * Time.deltaTime * chargeTime);
             // rb.velocity += transform.forward * Time.fixedDeltaTime * chargeTime;
+            
+                
             rb.transform.position += transform.forward * chargeForce * Time.fixedDeltaTime * chargeTime;
+            
             rb.AddForce(transform.forward * projectileSpeed * Time.fixedDeltaTime);
             
             gracePeriodTimer -= Time.fixedDeltaTime;
