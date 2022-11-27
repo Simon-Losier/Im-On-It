@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 namespace Asteroids
@@ -36,9 +37,16 @@ namespace Asteroids
             var radius = Random.Range(minRadius, maxRadius);
             var angle = Random.Range(0, 360);
             var position = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)) + transform.position;
+
+            InitializeAsteroid(radius, angle, position);
+        }
+        
+        private void InitializeAsteroid(float radius, float angle, Vector3 position)
+        {
             GameObject asteroid = Instantiate(prefab, position, Quaternion.identity, transform) as GameObject;
 
-            float scale = minSize + ((maxSize - minSize) * scaleCurve.Evaluate(Random.Range(0f, 1f)));
+            float evaluatedScaleCurve = scaleCurve.Evaluate(Random.Range(0f, 1f));
+            float scale = minSize + ((maxSize - minSize) * evaluatedScaleCurve);
             asteroid.transform.localScale = new Vector3(scale, scale, scale);
 
             CelestialBody celestialBody = asteroid.GetComponent<CelestialBody>();
@@ -49,7 +57,11 @@ namespace Asteroids
             var targetPosition = new Vector3(radius * Mathf.Cos(angleOfTarget), 0, radius * Mathf.Sin(angleOfTarget)) + transform.position;
 
             var initialVelocity = Random.Range(1f, 10f) * (targetPosition - position).normalized;
+
             celestialBody.Initialize(scaledMass, initialVelocity);
+
+            TrailRenderer trail = asteroid.GetComponentInChildren<TrailRenderer>();
+            trail.startWidth = evaluatedScaleCurve;
         }
 
         private void OnDrawGizmosSelected()
