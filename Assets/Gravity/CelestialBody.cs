@@ -80,10 +80,12 @@ public class CelestialBody : MonoBehaviour
         {
             Vector3 collisionDir = (collision.contacts[0].point - rb.position).normalized;
             Vector3 collisionForce = collisionDir * rb.velocity.magnitude * Mathf.Pow(rb.mass, 2f) * planetLaunchFactor;
-            
-            if(collisionForce.magnitude > boomThreshold)
+
+            effectInstance.transform.localScale = effectInstance.transform.localScale * collisionForce.magnitude /  50000;
+
+            if (collisionForce.magnitude > boomThreshold)
             {
-                effectInstance.transform.localScale = effectInstance.transform.localScale * 4;
+                Debug.Log("BOOM!!!!");
             }
             collision.rigidbody.AddForce(collisionForce);
 
