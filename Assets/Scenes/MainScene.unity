@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.008608443, g: 0.0056344736, b: 0.0079599675, a: 1}
+  m_IndirectSpecularColor: {r: 0.0086032925, g: 0.005951685, b: 0.008015681, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -360,10 +360,6 @@ PrefabInstance:
     - target: {fileID: 6197810572741993439, guid: ce3e25b0d6287ed43baa101348fda6d3, type: 3}
       propertyPath: m_Name
       value: AsteroidSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 6197810572741993439, guid: ce3e25b0d6287ed43baa101348fda6d3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce3e25b0d6287ed43baa101348fda6d3, type: 3}
