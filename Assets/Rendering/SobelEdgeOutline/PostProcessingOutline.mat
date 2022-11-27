@@ -54,11 +54,11 @@ Material:
     m_Floats:
     - REQUIRE_DEPTH_TEXTURE: 1
     - _DepthStrength: 1
-    - _DepthThickness: 1
-    - _DepthThreshold: 1
+    - _DepthThickness: 0.4
+    - _DepthThreshold: 1.23
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Thickness: 0.1
+    - _Thickness: -0.002
     - _Vector1: -0.53
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}

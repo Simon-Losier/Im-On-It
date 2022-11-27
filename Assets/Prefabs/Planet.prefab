@@ -256,6 +256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: {x: 0, y: 0, z: 0}
+  planetLaunchFactor: 150
+  boomThreshold: 100000
   isPlanet: 1
   effect: {fileID: 0}
 --- !u!135 &562370781330934473
