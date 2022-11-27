@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialVelocity: {x: 0, y: 0, z: 0}
   isPlanet: 0
+  effect: {fileID: 1956944717584859020, guid: e42ab1219e14bb447ac9ae6a98d70ddf, type: 3}
 --- !u!135 &4816686470502443882
 SphereCollider:
   m_ObjectHideFlags: 0

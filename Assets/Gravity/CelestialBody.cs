@@ -6,6 +6,7 @@ public class CelestialBody : MonoBehaviour
 {
     [SerializeField] private Vector3 initialVelocity;
     [SerializeField] private bool isPlanet;
+    [SerializeField] private GameObject effect;
 
     public Rigidbody rb { get; private set; }
     private bool hasRigidbody;
@@ -33,7 +34,7 @@ public class CelestialBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Collision(collision.rigidbody);
+        Collision(collision);
     }
 
     public void UpdateVelocity(List<CelestialBody> allBodies, float gravityConstant, float timeStep)
@@ -63,8 +64,11 @@ public class CelestialBody : MonoBehaviour
         rb.velocity = initialVelocity;
     }
 
-    private void Collision(Rigidbody rigidbody)
+    private void Collision(Collision collision)
     {
+        Rigidbody rigidbody = collision.rigidbody;
+        Instantiate(effect, collision.contacts[0].point, Quaternion.identity);
+
         bool collisionIsPlanet = rigidbody.GetComponent<CelestialBody>().isPlanet;
 
         rb.AddForce(rigidbody.velocity * rigidbody.mass);
