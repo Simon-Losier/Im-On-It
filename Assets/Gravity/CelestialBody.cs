@@ -5,7 +5,9 @@ using UnityEngine;
 public class CelestialBody : MonoBehaviour
 {
     [SerializeField] private Vector3 initialVelocity;
-    [SerializeField] private bool isPlanet;
+    [SerializeField] private float planetLaunchFactor = 100f;
+    [SerializeField] private int boomThreshold = 100000;
+    [SerializeField] private bool isPlanet = false;
     [SerializeField] private GameObject effect;
 
     public Rigidbody rb { get; private set; }
@@ -66,17 +68,29 @@ public class CelestialBody : MonoBehaviour
 
     private void Collision(Collision collision)
     {
+        GameObject effectInstance = null;
+
         Rigidbody rigidbody = collision.rigidbody;
+
         if (effect != null)
-            Instantiate(effect, collision.contacts[0].point, Quaternion.identity);
+            effectInstance = Instantiate(effect, collision.contacts[0].point, Quaternion.identity);
 
         bool collisionIsPlanet = rigidbody.GetComponent<CelestialBody>().isPlanet;
-
-        rb.AddForce(rigidbody.velocity * rigidbody.mass);
-        
         if (collisionIsPlanet)
         {
+            Vector3 collisionDir = (collision.contacts[0].point - rb.position).normalized;
+            Vector3 collisionForce = collisionDir * rb.velocity.magnitude * Mathf.Pow(rb.mass, 2f) * planetLaunchFactor;
+            
+            if(collisionForce.magnitude > boomThreshold)
+            {
+                effectInstance.transform.localScale = effectInstance.transform.localScale * 4;
+            }
+            collision.rigidbody.AddForce(collisionForce);
+
             Destroy(rb.gameObject);
+        } else
+        {
+            rb.AddForce(rigidbody.velocity * rigidbody.mass);
         }
     }
 }
