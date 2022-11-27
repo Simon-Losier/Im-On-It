@@ -31,7 +31,7 @@ namespace Ship {
                 return;
             
             for (int i = 0; i < collision.contactCount; i++) {
-                collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, collision.contacts[i].point, 3f);
+                collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionForce * (collision.gameObject.layer == 3 ? 1 : collision.rigidbody.mass), collision.contacts[i].point, 3f);
             }
             Destroy(this.gameObject);
         
