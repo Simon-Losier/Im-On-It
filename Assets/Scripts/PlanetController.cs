@@ -20,7 +20,7 @@ public class PlanetController : MonoBehaviour
     {
         if (PlayerInputManager.Instance.ControlState == PlayerInputManager.ControlStates.PlanetLaunch)
         {
-            if (Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D))
+            if (PlayerInputManager.Instance.LeftDown || PlayerInputManager.Instance.RightDown)
             {
                 _rigidbody.AddForce(-transform.forward * kickForce, ForceMode.Impulse);
                 _spawnObjectAtPoint.SpawnObject();
