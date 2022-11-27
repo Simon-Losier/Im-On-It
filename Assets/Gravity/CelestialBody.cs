@@ -5,11 +5,12 @@ using UnityEngine;
 public class CelestialBody : MonoBehaviour
 {
     [SerializeField] private Vector3 initialVelocity;
-    [SerializeField] private bool isPlanet;
+    [SerializeField] private bool isPlanet = false;
     [SerializeField] private GameObject effect;
 
     public Rigidbody rb { get; private set; }
     private bool hasRigidbody;
+    public bool largeBody;
 
     private void Awake()
     {
@@ -76,6 +77,10 @@ public class CelestialBody : MonoBehaviour
         
         if (collisionIsPlanet)
         {
+            Vector3 collisionDir = (collision.contacts[0].point - rb.position).normalized;
+            Vector3 collisionForce = new Vector3(collisionDir.x, collisionDir.y, collisionDir.z) * rb.velocity.magnitude;
+            
+            collision.rigidbody.AddForce(collisionForce *  Mathf.Pow(rb.mass, 2f) * 100);
             Destroy(rb.gameObject);
         }
     }
