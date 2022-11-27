@@ -13,6 +13,12 @@ namespace Ship {
         [SerializeField] private float chargeForce;
         [SerializeField] private float maxChargeTime;
         [SerializeField] private float chargeTime;
+        private AudioSource _audioSource;
+
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
         
 
         private float gracePeriodTimer;
@@ -43,10 +49,11 @@ namespace Ship {
                 if (chargeTime > maxChargeTime) {
                     chargeTime = maxChargeTime;
                 }
-                
+                _audioSource.volume = chargeTime / maxChargeTime;
             }
             else {
                 chargeTime = 0;
+                _audioSource.volume = 0.1f;
             }
             
             // rb.AddForce(transform.forward * chargeForce * Time.deltaTime * chargeTime);
