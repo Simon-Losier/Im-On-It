@@ -13,6 +13,7 @@ namespace Ship {
         [SerializeField] private float chargeForce;
         [SerializeField] private float maxChargeTime;
         [SerializeField] private float chargeTime;
+        [SerializeField] private float launchThrust;
         private AudioSource _audioSource;
 
         private void Awake()
@@ -25,6 +26,7 @@ namespace Ship {
         public ParticleSystem ps;
         private void Start() {
             rb = GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * launchThrust, ForceMode.Impulse);
             gracePeriodTimer = gracePeriod;
         }
 

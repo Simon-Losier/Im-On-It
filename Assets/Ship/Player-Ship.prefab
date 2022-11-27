@@ -103,6 +103,7 @@ MonoBehaviour:
   chargeForce: 100
   maxChargeTime: 1
   chargeTime: 0
+  launchThrust: 99.9
   ps: {fileID: 0}
 --- !u!114 &6413887718675038727
 MonoBehaviour:
