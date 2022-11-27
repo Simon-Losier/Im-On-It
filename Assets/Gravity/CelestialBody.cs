@@ -85,7 +85,7 @@ public class CelestialBody : MonoBehaviour
 
             if (collisionForce.magnitude > boomThreshold)
             {
-                HitStopManager.Instance.HitStop(0.12f);
+                HitStopManager.Instance.HitStop(0.16f);
             }
             collision.rigidbody.AddForce(collisionForce);
             HitStopManager.Instance.HitStop(0.08f);
