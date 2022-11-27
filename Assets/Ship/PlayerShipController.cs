@@ -9,18 +9,18 @@ namespace Ship
 
         private void Update() 
         {
-            PlayerInput();
+            DoRotation();
         }
 
-        private void PlayerInput() 
+        private void DoRotation() 
         {
             if (PlayerInputManager.Instance.ControlState == PlayerInputManager.ControlStates.RocketSteering)
             {
-                if (Input.GetKey(KeyCode.A))
+                if (PlayerInputManager.Instance.Left)
                 {
                     transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
                 }
-                if (Input.GetKey(KeyCode.D))
+                if (PlayerInputManager.Instance.Right)
                 {
                     transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
                 }   
