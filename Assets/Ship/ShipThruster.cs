@@ -16,7 +16,7 @@ namespace Ship {
         
 
         private float gracePeriodTimer;
-        
+        public ParticleSystem ps;
         private void Start() {
             rb = GetComponent<Rigidbody>();
             gracePeriodTimer = gracePeriod;
@@ -43,6 +43,7 @@ namespace Ship {
                 if (chargeTime > maxChargeTime) {
                     chargeTime = maxChargeTime;
                 }
+                
             }
             else {
                 chargeTime = 0;
