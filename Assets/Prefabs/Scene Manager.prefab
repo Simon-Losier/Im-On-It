@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initSceneIndex: 0
-  introSceneIndex: 1
-  mainSceneIndex: 2
-  endSceneIndex: 3
+  titleSceneIndex: 1
+  introSceneIndex: 2
+  mainSceneIndex: 3
+  endSceneIndex: 4

@@ -9,9 +9,10 @@ public class CustomSceneManager : MonoBehaviour
     public static CustomSceneManager Instance { get; private set; }
     
     [SerializeField] private int initSceneIndex = 0;
-    [SerializeField] private int introSceneIndex = 1;
-    [SerializeField] private int mainSceneIndex = 2;
-    [SerializeField] private int endSceneIndex = 3;
+    [SerializeField] private int titleSceneIndex = 1;
+    [SerializeField] private int introSceneIndex = 2;
+    [SerializeField] private int mainSceneIndex = 3;
+    [SerializeField] private int endSceneIndex = 4;
 
     public bool IsGameplayScene => SceneManager.GetActiveScene().buildIndex == mainSceneIndex;
     
@@ -31,7 +32,7 @@ public class CustomSceneManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == initSceneIndex)
         {
-            SceneManager.LoadScene(introSceneIndex);
+            SceneManager.LoadScene(titleSceneIndex);
         }
     }
 
@@ -40,6 +41,10 @@ public class CustomSceneManager : MonoBehaviour
         if (!PlayerInputManager.Instance.LeftDown && !PlayerInputManager.Instance.RightDown)
             return;
 
+        if (SceneManager.GetActiveScene().buildIndex == titleSceneIndex)
+        {
+            SceneManager.LoadScene(introSceneIndex);
+        }
         if (SceneManager.GetActiveScene().buildIndex == introSceneIndex)
         {
             SceneManager.LoadScene(mainSceneIndex);
