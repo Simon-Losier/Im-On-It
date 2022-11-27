@@ -46,8 +46,11 @@ public class CustomSceneManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().buildIndex == endSceneIndex)
         {
-            Destroy(ScoreManager.Instance.gameObject);
-            SceneManager.LoadScene(mainSceneIndex);
+            if (EndSceneAnimationProgressTracker.Instance.IsDone)
+            {
+                Destroy(ScoreManager.Instance.gameObject);
+                SceneManager.LoadScene(mainSceneIndex);
+            }
         }
     }
     
