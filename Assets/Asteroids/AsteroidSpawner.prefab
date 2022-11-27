@@ -81,5 +81,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxSize: 3
-  minSize: 0.1
+  maxSize: 1
+  minSize: 0.2
