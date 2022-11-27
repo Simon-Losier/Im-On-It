@@ -44,9 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73399e56e7c7a80429f01830ab2bcb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRadius: 33.43
-  maxRadius: 38.84
-  spawnTimer: 1
   prefab: {fileID: 9061055354731036286, guid: f2bb6841e4ad1ba408b2c89405782b86, type: 3}
   scaleCurve:
     serializedVersion: 2
@@ -83,3 +80,33 @@ MonoBehaviour:
     m_RotationOrder: 4
   maxSize: 1
   minSize: 0.2
+  minRadius: 33.43
+  maxRadius: 38.84
+  firstSpawnTimer: 6
+  minSpawnTimer: 3
+  maxSpawnTimer: 12
+  spawnTimerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  timeUntilMaxSpawnTimer: 120
