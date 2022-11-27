@@ -7,33 +7,54 @@ namespace Asteroids
 {
     public class RadialSpawner : MonoBehaviour
     {
-        [SerializeField] private float minRadius;
-        [SerializeField] private float maxRadius;
-        [SerializeField] private float spawnTimer;
+        [Header("Object settings")]
         [SerializeField] private GameObject prefab;
         [SerializeField] private AnimationCurve scaleCurve;
         [SerializeField] private float maxSize;
         [SerializeField] private float minSize;
+        
+        [Header("Spawn Area")]
+        [SerializeField] private float minRadius;
+        [SerializeField] private float maxRadius;
+        
+        [Header("Difficulty")]
+        [SerializeField] private float firstSpawnTimer;
+        [SerializeField] private float minSpawnTimer;
+        [SerializeField] private float maxSpawnTimer;
+        [SerializeField] private AnimationCurve spawnTimerCurve;
+        [SerializeField] private float timeUntilMaxSpawnTimer;
 
+        private float _initialSpawnTimer;
+        private float _spawnTimer;
         private float _timer;
 
         private void Start()
         {
-            _timer = spawnTimer;
+            _initialSpawnTimer = firstSpawnTimer;
+            _timer = 0f;
+            _spawnTimer = minSpawnTimer;
         }
         
         private void Update()
         {
-            _timer -= Time.deltaTime;
-            if (_timer <= 0)
+            if (_initialSpawnTimer > 0)
             {
-                _timer = spawnTimer;
+                _initialSpawnTimer -= Time.deltaTime;
+                return;
+            }
+            _timer += Time.deltaTime;
+            _spawnTimer -= Time.deltaTime;
+
+            if (_spawnTimer <= 0)
+            {
+                _spawnTimer = spawnTimerCurve.Evaluate(_timer/timeUntilMaxSpawnTimer) * (maxSpawnTimer - minSpawnTimer) + minSpawnTimer;
                 Spawn();
             }
         }
         
         private void Spawn()
         {
+            Debug.Log("Spawning a thing");
             var radius = Random.Range(minRadius, maxRadius);
             var angle = Random.Range(0, 360);
             var position = new Vector3(radius * Mathf.Cos(angle), 0, radius * Mathf.Sin(angle)) + transform.position;
