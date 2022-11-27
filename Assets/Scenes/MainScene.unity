@@ -223,6 +223,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2610600297483087495, guid: ac246c3929d085547bf46459302c33d5, type: 3}
+      propertyPath: m_Volume
+      value: 0.532
+      objectReference: {fileID: 0}
     - target: {fileID: 3146104048456677756, guid: ac246c3929d085547bf46459302c33d5, type: 3}
       propertyPath: m_Name
       value: Game Manager
@@ -1006,3 +1010,21 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &1577472277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3146104048456677756, guid: ac246c3929d085547bf46459302c33d5, type: 3}
+  m_PrefabInstance: {fileID: 498393484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1577472280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577472277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9f00a696f889342a9735f191310bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
