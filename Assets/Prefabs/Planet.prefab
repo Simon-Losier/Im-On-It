@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: {x: 0, y: 0, z: 0}
-  isPlanet: 0
+  isPlanet: 1
   effect: {fileID: 0}
 --- !u!135 &562370781330934473
 SphereCollider:
@@ -106,7 +106,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8387865909659697923}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 28b1ced9e607b56419210cba39c8eee1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
