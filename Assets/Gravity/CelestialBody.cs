@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CelestialBody : MonoBehaviour
 {
-    public Vector3 initialVelocity;
+    [SerializeField] private Vector3 initialVelocity;
+    [SerializeField] private bool isPlanet;
+    [SerializeField] private GameObject effect;
 
     public Rigidbody rb { get; private set; }
     private bool hasRigidbody;
-
 
     private void Awake()
     {
@@ -29,6 +30,11 @@ public class CelestialBody : MonoBehaviour
     private void OnDisable()
     {
         GravityManager.Instance.RemoveCelestialBody(this);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Collision(collision);
     }
 
     public void UpdateVelocity(List<CelestialBody> allBodies, float gravityConstant, float timeStep)
@@ -56,5 +62,20 @@ public class CelestialBody : MonoBehaviour
     {
         rb.mass = mass;
         rb.velocity = initialVelocity;
+    }
+
+    private void Collision(Collision collision)
+    {
+        Rigidbody rigidbody = collision.rigidbody;
+        Instantiate(effect, collision.contacts[0].point, Quaternion.identity);
+
+        bool collisionIsPlanet = rigidbody.GetComponent<CelestialBody>().isPlanet;
+
+        rb.AddForce(rigidbody.velocity * rigidbody.mass);
+        
+        if (collisionIsPlanet)
+        {
+            Destroy(rb.gameObject);
+        }
     }
 }
