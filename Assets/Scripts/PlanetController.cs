@@ -28,4 +28,9 @@ public class PlanetController : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        CustomSceneManager.Instance.LoadEndScene();
+    }
 }

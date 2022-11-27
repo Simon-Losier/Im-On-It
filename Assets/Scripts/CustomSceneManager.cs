@@ -12,6 +12,8 @@ public class CustomSceneManager : MonoBehaviour
     [SerializeField] private int introSceneIndex = 1;
     [SerializeField] private int mainSceneIndex = 2;
     [SerializeField] private int endSceneIndex = 3;
+
+    public bool IsGameplayScene => SceneManager.GetActiveScene().buildIndex == mainSceneIndex;
     
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class CustomSceneManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().buildIndex == endSceneIndex)
         {
+            Destroy(ScoreManager.Instance.gameObject);
             SceneManager.LoadScene(mainSceneIndex);
         }
     }

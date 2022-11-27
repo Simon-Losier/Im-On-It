@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (active)
+        if (active && CustomSceneManager.Instance.IsGameplayScene)
             AddScore(_wagePerSecond * Time.deltaTime);
     }
 }

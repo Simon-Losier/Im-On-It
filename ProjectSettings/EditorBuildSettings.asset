@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/InitScene.unity
     guid: 9a4865c898c40174f8c3eed83750209f
   - enabled: 1
-    path: Assets/Scenes/TestTransition1.unity
-    guid: b5decb071dabc134981e323f4104a90d
+    path: Assets/Scenes/IntroLore.unity
+    guid: f10608a0e910c0c4d9c6f4b413dc9fde
   - enabled: 1
-    path: Assets/Scenes/TestTransition2.unity
-    guid: 9f12c90f884d9b14395a9e951e6c6d91
+    path: Assets/Scenes/MainScene.unity
+    guid: a67627e33e6d1b841bc1dbb82d193a23
   - enabled: 1
-    path: Assets/Scenes/TestTransition3.unity
-    guid: b1f45c8a550823646a2830702f69a14f
+    path: Assets/Scenes/FinalScene.unity
+    guid: 02a4cc0242c2c2541b784e8ff880f2ad
   m_configObjects: {}
