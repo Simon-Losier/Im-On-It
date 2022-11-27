@@ -6,8 +6,6 @@ namespace Ship
     public class PlayerShipController : MonoBehaviour
     {
         [SerializeField] private float turnSpeed;
-        private bool aKey;
-        private bool dKey;
 
         private void Update() 
         {
@@ -16,22 +14,22 @@ namespace Ship
 
         private void PlayerInput() 
         {
-            aKey = Input.GetKey(KeyCode.A);
-            dKey = Input.GetKey(KeyCode.D);
+            if (PlayerInputManager.Instance.ControlState == PlayerInputManager.ControlStates.RocketSteering)
+            {
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+                }   
+            }
         }
 
-        private void FixedUpdate()
+        private void OnDestroy()
         {
-            
-            if (aKey)
-            {
-                transform.Rotate(Vector3.up, -turnSpeed * Time.fixedDeltaTime);
-            }
-
-            if (dKey)
-            {
-                transform.Rotate(Vector3.up, turnSpeed * Time.fixedDeltaTime);
-            }
+            PlayerInputManager.Instance.SetControlState(PlayerInputManager.ControlStates.PlanetLaunch);
         }
     }
 }

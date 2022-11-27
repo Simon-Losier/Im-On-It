@@ -67,7 +67,8 @@ public class CelestialBody : MonoBehaviour
     private void Collision(Collision collision)
     {
         Rigidbody rigidbody = collision.rigidbody;
-        Instantiate(effect, collision.contacts[0].point, Quaternion.identity);
+        if (effect != null)
+            Instantiate(effect, collision.contacts[0].point, Quaternion.identity);
 
         bool collisionIsPlanet = rigidbody.GetComponent<CelestialBody>().isPlanet;
 

@@ -77,9 +77,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.95
+  m_Height: 2.7154973
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.117251426}
 --- !u!114 &-408778953938737734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,8 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fdb35f0c772034dbdab8c3e2303fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 17500
+  projectileSpeed: 25000
   explosionForce: 130.82
+  gracePeriod: 0.2
 --- !u!114 &6413887718675038727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocity: {x: 0, y: 0, z: 0}
+  isPlanet: 0
+  effect: {fileID: 0}
 --- !u!1001 &6386586685929583785
 PrefabInstance:
   m_ObjectHideFlags: 0
