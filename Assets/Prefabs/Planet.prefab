@@ -68,8 +68,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useRandomAxis: 0
   axis: {x: 0, y: 1, z: 0}
-  minSpeed: 15
-  maxSpeed: 15
+  minSpeed: 30
+  maxSpeed: 30
 --- !u!54 &1125493024
 Rigidbody:
   m_ObjectHideFlags: 0

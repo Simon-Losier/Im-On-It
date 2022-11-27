@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 25000
-  explosionForce: 352.38
+  explosionForce: 194.8
   gracePeriod: 0.2
   chargeForce: 100
   maxChargeTime: 1

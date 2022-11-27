@@ -23,9 +23,9 @@ namespace Assets.Rendering
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR*/
             if (renderingData.cameraData.isSceneViewCamera) return;
-#endif
+/*#endif*/
             renderer.EnqueuePass(_customPass);
         }
     }
