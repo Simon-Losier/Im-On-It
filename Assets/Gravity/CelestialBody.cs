@@ -85,10 +85,10 @@ public class CelestialBody : MonoBehaviour
 
             if (collisionForce.magnitude > boomThreshold)
             {
-                Debug.Log("BOOM!!!!");
+                HitStopManager.Instance.HitStop(0.16f);
             }
             collision.rigidbody.AddForce(collisionForce);
-
+            HitStopManager.Instance.HitStop(0.08f);
             Destroy(rb.gameObject);
         } else
         {
