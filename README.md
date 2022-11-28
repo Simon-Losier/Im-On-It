@@ -4,7 +4,7 @@ You are an intern, and your first assignment is take over the
 
 asteroid threat protection program agent. Meaning the world is in your hands, will you save the planet?
 
-##Controls
+## Controls
 
 A: Will turn your ship left
 
