@@ -36,5 +36,7 @@ https://freesound.org/people/MATRIXXX_/sounds/660108/
 
 https://freesound.org/people/thanvannispen/sounds/29986/
 
+https://kenney.nl/assets/space-kit
+
 ## Techncial details
 Built on unity 2021.3.14f1
