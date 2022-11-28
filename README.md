@@ -13,9 +13,9 @@ D: Will turn your ship right
 
 A+D: Will give your ship a boost.
 
-##Credits-
 
-Developpers:
+
+##Developpers
 
 Aryah Kannan
 
