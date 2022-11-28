@@ -1,5 +1,4 @@
-# DalInteractiveGameworks
-Im on it
+# Im on it
 
 You are an intern, and your first assignment is take over the
 
@@ -15,7 +14,7 @@ A+D: Will give your ship a boost.
 
 
 
-##Developpers
+## Developpers
 
 Aryah Kannan
 
@@ -25,7 +24,7 @@ Simon Losier
 
 Trent Baker
 
-##Attribution
+## Attribution
 
 https://fonts.google.com/specimen/PT+Serif?preview.text=$0.49&preview.text_type=custom
 
